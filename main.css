@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.body {
+    background-color: rgb(236, 236, 236);
+}
+
+.lemma-checkbox {
+    position: absolute;
+    left: -100vw;
+}
+
+.checkbox-label {
+    width: 3em;
+    height: 3em;
+    display: inline-grid;
+    place-content: center;
+    background-color: #f2f2f2;
+    margin: 2px;
+    transition: 0.3s;
+}
+
+.lemma-checkbox:checked ~ .checkbox-label {
+    background-color: #40ff4d;
+}
+
+.checkbox-label:hover {
+    background-color: #adffb2;
+    transition: 0.3s;
+}
+
+.form {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.main-container {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.theorems {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.theorem {
+    padding: 0 10px 10px 10px;
+    border: 1px solid gray;
+    margin: 10px;
+}
+
+.theorem-name {
+    text-align: center;
+    padding: 5px;
+    margin: 0 -10px;
+    background: #f3f3f3;
+}
+
+.theorem-description {
+    padding: 10px;
+    text-align: center;
+}
+
+.lemma {
+    padding: 5px 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .theorems {
+        display: grid;
+        grid-template-columns: auto;
+    }  
+}
+
+@media only screen and (max-width: 1027px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: auto;
+    } 
+}
