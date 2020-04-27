@@ -59,7 +59,7 @@ let theorems = [
     new Theorem("T331(b)", "<b>[L1, L2, L6-L8, L14, MP, Gen]: ⊢ ∀xB ∨ ∀xC → ∀x(B ∨ C)</b>", [lemmas.L1, lemmas.L2, lemmas.L6, lemmas.L7, lemmas.L8, lemmas.L14, lemmas.MP, lemmas.Gen]),
     new Theorem("T332(a)", "<b>[L1-L8, L12-L15, MP, Gen]: ⊢ ∃x(B ∨ C) ↔ ∃xB ∨ ∃xC</b>", [lemmas.L1, lemmas.L2, lemmas.L3, lemmas.L4, lemmas.L5, lemmas.L6, lemmas.L7, lemmas.L8, lemmas.L12, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
     new Theorem("T332(b)", "<b>[L1-L5, L13-L15, MP, Gen]: ⊢ ∃x(B ∧ C) → ∃xB ∧ ∃xC</b>", [lemmas.L1, lemmas.L2, lemmas.L3, lemmas.L4, lemmas.L5, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
-    new Theorem("T12", "<b>[L12, MP, Gen]: ∀xF(x) ⊢ F(x)</b>", [lemmas.L12, lemmas.MP, lemmas.Gen]),
+    new Theorem("T12", "<b>[L12, MP, Gen]: ∀xF(x) ⊢ F(x)</b></br>Note: Ar T15 beigās eksistences kvantoru var pielikt atpakaļ.", [lemmas.L12, lemmas.MP, lemmas.Gen]),
     new Theorem("T13", "<b>[L13, MP, Gen]: F(x) ⊢ ∃xF(x)</b>", [lemmas.L13, lemmas.MP, lemmas.Gen]),
     new Theorem("T14", "<b>[L14, MP, Gen] G → F(x) ⊢ G → ∀xF(x)</b>", [lemmas.L14, lemmas.MP, lemmas.Gen]),
     new Theorem("T15", "<b>[L15, MP, Gen]: F(x) → G ⊢ ∃xF(x) → G</b>", [lemmas.L15, lemmas.MP, lemmas.Gen])
