@@ -4,8 +4,8 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.body {
-    background-color: rgb(236, 236, 236);
+body {
+    background-color: rgb(253, 253, 253);
 }
 
 .lemma-checkbox {
@@ -83,4 +83,24 @@
         display: grid;
         grid-template-columns: auto;
     } 
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

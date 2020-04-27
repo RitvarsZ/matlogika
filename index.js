@@ -49,6 +49,20 @@ let theorems = [
     new Theorem("T251(b)","<b>[L1, L2, L8, L10, MP]: ⊢ A ∨ B → (￢A → B)</b>.",[lemmas.L1, lemmas.L2, lemmas.L8, lemmas.L10, lemmas.MP]),
     new Theorem("T251(c)","<b>[L1, L8, L10, MP]: ⊢ ￢A ∨ B → (A → B)</b>.",[lemmas.L1, lemmas.L8, lemmas.L10, lemmas.MP]),
     new Theorem("T252","<b>[L1-L10, MP]:</b>.</br>a) <b>⊢ (￢￢A → ￢￢B) → ￢￢(A → B)</b>.</br>It's the converse of Theorem 2.4.7(b). Hence, ⊢￢￢(A → B) ↔ (￢￢A → ￢￢B).</br>b) <b>⊢ ￢￢A → (￢A → A)</b>.</br>It's the converse of Theorem 2.4.6(a). Hence, ⊢ ￢￢A ↔ (￢A → A).</br>c) <b>⊢ A v ￢A → (￢￢A → A)</b>.</br>d) <b>⊢ ￢￢(￢￢A → A)</b>.", [lemmas.L1,lemmas.L2,lemmas.L3,lemmas.L4,lemmas.L5,lemmas.L6,lemmas.L7,lemmas.L8,lemmas.L9,lemmas.L10,lemmas.MP]),
+    new Theorem("T310","<b>[L1, L2, L12, L13, MP] ⊢ ∀xB(x) → ∃xB(x)</b></br>It prohibits \"empty domains\".", [lemmas.L1, lemmas.L2,lemmas.L12, lemmas.L13, lemmas.MP]),
+    new Theorem("T311(a)", "<b>[L1, L2, L12, L14, MP, Gen] ⊢ ∀x(B → C) → (∀xB → ∀xC)</b>", [lemmas.L1, lemmas.L2, lemmas.L12, lemmas.L14, lemmas.MP, lemmas.Gen]),
+    new Theorem("T311(b)", "<b>[L1, L2, L12-L15, MP, Gen] ⊢ ∀x(B → C) → (∃xB → ∃xC)</b>", [lemmas.L1, lemmas.L2, lemmas.L12, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
+    new Theorem("T312(a)", "<b>[L1, L2, L5, L12, L14, MP, Gen] ⊢ ∀x∀yB(x, y) ↔ ∀y∀xB(x, y)</b>", [lemmas.L1, lemmas.L2, lemmas.L5, lemmas.L12, lemmas.L14, lemmas.MP, lemmas.Gen]),
+    new Theorem("T312(b)", "<b>[L1, L2, L5, L13, L15, MP, Gen] ⊢ ∃x∃yB(x, y) ↔ ∃y∃xB(x, y)</b>", [lemmas.L1, lemmas.L2, lemmas.L5, lemmas.L13, lemmas.L15, lemmas.MP, lemmas.Gen]),
+    new Theorem("T312(c)", "<b>[L1, L2, L12-L15, MP, Gen] ⊢ ∃x∀yB(x, y) → ∀y∃xB(x, y)</b>", [lemmas.L1, lemmas.L2, lemmas.L12, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
+    new Theorem("T331(a)", "<b>[L1-L5, L12, L14, MP, Gen]: ⊢ ∀x(B ∧ C) ↔ ∀xB ∧ ∀xC</b>", [lemmas.L1, lemmas.L2, lemmas.L3, lemmas.L4, lemmas.L5, lemmas.L12, lemmas.L14, lemmas.MP, lemmas.Gen]),
+    new Theorem("T331(b)", "<b>[L1, L2, L6-L8, L14, MP, Gen]: ⊢ ∀xB ∨ ∀xC → ∀x(B ∨ C)</b>", [lemmas.L1, lemmas.L2, lemmas.L6, lemmas.L7, lemmas.L8, lemmas.L14, lemmas.MP, lemmas.Gen]),
+    new Theorem("T332(a)", "<b>[L1-L8, L12-L15, MP, Gen]: ⊢ ∃x(B ∨ C) ↔ ∃xB ∨ ∃xC</b>", [lemmas.L1, lemmas.L2, lemmas.L3, lemmas.L4, lemmas.L5, lemmas.L6, lemmas.L7, lemmas.L8, lemmas.L12, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
+    new Theorem("T332(b)", "<b>[L1-L5, L13-L15, MP, Gen]: ⊢ ∃x(B ∧ C) → ∃xB ∧ ∃xC</b>", [lemmas.L1, lemmas.L2, lemmas.L3, lemmas.L4, lemmas.L5, lemmas.L13, lemmas.L14, lemmas.L15, lemmas.MP, lemmas.Gen]),
+    new Theorem("T12", "<b>[L12, MP, Gen]: ∀xF(x) ⊢ ∀xF(x)</b>", [lemmas.L12, lemmas.MP, lemmas.Gen]),
+    new Theorem("T13", "<b>[L13, MP, Gen]: F(x) ⊢ ∃xF(x)</b>", [lemmas.L13, lemmas.MP, lemmas.Gen]),
+    new Theorem("T14", "<b>[L14, MP, Gen] G → F(x) ⊢ G → ∀xF(x)</b>", [lemmas.L14, lemmas.MP, lemmas.Gen]),
+    new Theorem("T15", "<b>[L15, MP, Gen]: F(x) → G ⊢ ∃xF(x) → G</b>", [lemmas.L15, lemmas.MP, lemmas.Gen])
 ]
 
 let availableTheorems = [];
@@ -74,14 +88,24 @@ function checkboxesChanged() {
 }
 
 function initCheckboxes() {
+    document.getElementById("select-all").addEventListener('click', selectAll);
     let checkboxes = document.getElementsByClassName("lemma-checkbox");
     Array.from(checkboxes).forEach(e => {
         e.addEventListener('change', checkboxesChanged);
     });
 }
 
+function selectAll() {
+    for (let [key, value] of Object.entries(lemmas)) {
+        document.getElementById(value.name).click();
+    }
+}
+
 function index() {
     let form = document.getElementById("form");
+    form.innerHTML = `
+    <input type="button" id="select-all" value="Select All">
+    `
     let axiomList = document.getElementById("lemmas");
     for (let l in lemmas) {
         form.innerHTML += `
@@ -95,5 +119,5 @@ function index() {
         axiomList.innerHTML += `
         <div class="lemma"><b>${value.name}</b>: ${value.description}</div>
         `
-      }
+    }
 }
